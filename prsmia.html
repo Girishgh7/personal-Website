@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PRISMA | Research Lab</title>
+<meta name="description" content="Prisma AI Research Lab - Publications and Model Weights" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Courier New', 'Monaco', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  background: #000;
+  color: #ccc;
+  padding: 20px;
+}
+
+body.light {
+  background: #fafafa;
+  color: #222;
+}
+
+body.light a { color: #d65a0a; }
+body.light .ascii-border { border-color: #ddd; }
+body.light .card { border-color: #ddd; background: #fff; }
+body.light .btn { border-color: #d65a0a; color: #d65a0a; }
+body.light .btn:hover { background: #d65a0a; color: #fff; }
+body.light input { background: #fff; border-color: #ddd; color: #222; }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ASCII Header */
+.ascii-header {
+  text-align: center;
+  margin: 20px 0 30px;
+  white-space: pre;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #e87c1b;
+}
+
+.subtitle {
+  text-align: center;
+  margin: -10px 0 30px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Controls */
+.controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.ctrl-btn {
+  background: none;
+  border: 1px solid #e87c1b;
+  color: #e87c1b;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  transition: all 0.2s;
+}
+
+.ctrl-btn:hover {
+  background: #e87c1b;
+  color: #000;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 30px;
+  border: 1px solid #e87c1b;
+}
+
+.tabs button {
+  flex: 1;
+  background: none;
+  border: none;
+  border-right: 1px solid #e87c1b;
+  color: #ccc;
+  padding: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.tabs button:last-child { border-right: none; }
+
+.tabs button.active {
+  background: #e87c1b;
+  color: #000;
+}
+
+.tabs button:hover:not(.active) {
+  background: rgba(232, 124, 27, 0.1);
+}
+
+/* Search */
+.search-bar {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  color: #ccc;
+  font-family: inherit;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #e87c1b;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: none;
+  border: 1px solid #444;
+  color: #888;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  border-color: #e87c1b;
+  color: #e87c1b;
+}
+
+.filter-btn:hover {
+  border-color: #e87c1b;
+}
+
+/* Cards */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #444;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: #e87c1b;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #e87c1b;
+  margin-bottom: 8px;
+}
+
+.card-meta {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.card-content {
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: #aaa;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 10px;
+  padding: 3px 8px;
+  border: 1px solid #555;
+  color: #888;
+}
+
+.model-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+  padding: 12px;
+  border: 1px solid #333;
+  font-size: 11px;
+}
+
+.model-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.model-info-label {
+  opacity: 0.5;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.model-info-value {
+  color: #e87c1b;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #e87c1b;
+  color: #e87c1b;
+  text-decoration: none;
+  font-size: 12px;
+  text-align: center;
+  transition: all 0.2s;
+  background: none;
+}
+
+.btn:hover {
+  background: #e87c1b;
+  color: #000;
+}
+
+/* Section */
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* Loading/Empty */
+.loading, .empty {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.5;
+  font-size: 13px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.ascii-divider {
+  text-align: center;
+  margin: 30px 0;
+  opacity: 0.3;
+  font-size: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding: 10px; }
+  .ascii-header { font-size: 8px; }
+  .controls { position: static; margin-bottom: 20px; }
+  .model-info { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button class="ctrl-btn" id="langBtn">KA</button>
+  <button class="ctrl-btn" id="themeBtn">◐</button>
+</div>
+
+<div class="container">
+  
+  <!-- ASCII Header -->
+  <pre class="ascii-header">
+┌─────────────────────────────────────────────────┐
+│  ██████╗ ██████╗ ██╗███████╗███╗   ███╗ █████╗  │
+│  ██╔══██╗██╔══██╗██║██╔════╝████╗ ████║██╔══██╗ │
+│  ██████╔╝██████╔╝██║███████╗██╔████╔██║███████║ │
+│  ██╔═══╝ ██╔══██╗██║╚════██║██║╚██╔╝██║██╔══██║ │
+│  ██║     ██║  ██║██║███████║██║ ╚═╝ ██║██║  ██║ │
+│  ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ │
+└─────────────────────────────────────────────────┘</pre>
+
+  <div class="subtitle" data-en="AI Research Lab • Girish G Hegde" data-kn="AI ಸಂಶೋಧನಾ ಪ್ರಯೋಗಾಲಯ • IISER TVM">AI Research Lab • Girish G Hegde</div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="active" data-tab="pubs" data-en="[ Publications ]" data-kn="[ ಪ್ರಕಟಣೆಗಳು ]">[ Publications ]</button>
+    <button data-tab="models" data-en="[ Models ]" data-kn="[ ಮಾದರಿಗಳು ]">[ Models ]</button>
+  </div>
+  
+  <!-- Publications Section -->
+  <section id="pubs" class="section active">
+    <input type="text" class="search-bar" id="searchPubs" placeholder="search..." data-en-ph="search..." data-kn-ph="ಹುಡುಕಿ...">
+    <div class="filters" id="pubFilters"></div>
+    <div class="grid" id="pubsGrid">
+      <div class="loading">loading...</div>
+    </div>
+  </section>
+  
+  <!-- Models Section -->
+  <section id="models" class="section">
+    <input type="text" class="search-bar" id="searchModels" placeholder="search..." data-en-ph="search..." data-kn-ph="ಹುಡುಕಿ...">
+    <div class="filters" id="modelFilters"></div>
+    <div class="grid" id="modelsGrid">
+      <div class="loading">loading...</div>
+    </div>
+  </section>
+  
+  <div class="ascii-divider">─────────────────────────────────────────</div>
+  
+  <div class="footer" data-en="© 2025 Prisma Research Lab" data-kn="© 2025 Prisma ಸಂಶೋಧನಾ ಪ್ರಯೋಗಾಲಯ">© 2025 Prisma Research Lab</div>
+
+</div>
+
+<script>
+// State
+let postsData = [];
+let modelsData = [];
+let lang = localStorage.getItem('lang') || 'en';
+let filters = { pubs: new Set(), models: new Set() };
+
+// Theme
+const themeBtn = document.getElementById('themeBtn');
+const theme = localStorage.getItem('theme') || 'dark';
+if (theme === 'light') document.body.classList.add('light');
+
+themeBtn.onclick = () => {
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+};
+
+// Language
+const langBtn = document.getElementById('langBtn');
+
+function applyLang(l) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute(`data-${l}`);
+    if (text) el.textContent = text;
+  });
+  
+  document.querySelectorAll('[data-en-ph]').forEach(el => {
+    const text = el.getAttribute(`data-${l}-ph`);
+    if (text) el.placeholder = text;
+  });
+  
+  langBtn.textContent = l === 'en' ? 'KN' : 'EN';
+  lang = l;
+  localStorage.setItem('lang', l);
+  
+  displayPosts(postsData);
+  displayModels(modelsData);
+}
+
+applyLang(lang);
+langBtn.onclick = () => applyLang(lang === 'en' ? 'kn' : 'en');
+
+// Tabs
+document.querySelectorAll('.tabs button').forEach(btn => {
+  btn.onclick = () => {
+    const tab = btn.getAttribute('data-tab');
+    
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+  };
+});
+
+// Load content
+async function loadContent(name) {
+  try {
+    const res = await fetch(`content/${name}_${lang}.txt`);
+    if (!res.ok) throw new Error();
+    return await res.text();
+  } catch {
+    if (lang === 'kn') {
+      try {
+        const fb = await fetch(`content/${name}_en.txt`);
+        return await fb.text();
+      } catch {
+        return 'Content unavailable.';
+      }
+    }
+    return 'Content unavailable.';
+  }
+}
+
+// Publications
+async function loadPosts() {
+  try {
+    const res = await fetch('data/posts.json');
+    postsData = (await res.json()).posts;
+    displayPosts(postsData);
+    setupPubFilters();
+  } catch {
+    document.getElementById('pubsGrid').innerHTML = '<div class="empty">Failed to load.</div>';
+  }
+}
+
+async function displayPosts(posts) {
+  const grid = document.getElementById('pubsGrid');
+  
+  if (posts.length === 0) {
+    grid.innerHTML = '<div class="empty">No publications found.</div>';
+    return;
+  }
+  
+  const cards = await Promise.all(posts.map(async p => {
+    const content = await loadContent(p.content);
+    const title = p[`title_${lang}`] || p.title_en;
+    
+    return `
+      <div class="card">
+        <div class="card-title">${title}</div>
+        <div class="card-meta">${p.author} • ${p.date}</div>
+        <div class="card-content">${content}</div>
+        ${p.tags ? `<div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>` : ''}
+        <a href="${p.pdf}" class="btn" download>↓ PDF</a>
+      </div>
+    `;
+  }));
+  
+  grid.innerHTML = cards.join('');
+}
+
+function setupPubFilters() {
+  const tags = [...new Set(postsData.flatMap(p => p.tags || []))];
+  const cont = document.getElementById('pubFilters');
+  
+  cont.innerHTML = tags.map(t => `<button class="filter-btn" data-f="${t}">${t}</button>`).join('');
+  
+  cont.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.onclick = () => {
+      const f = btn.getAttribute('data-f');
+      
+      if (filters.pubs.has(f)) {
+        filters.pubs.delete(f);
+        btn.classList.remove('active');
+      } else {
+        filters.pubs.add(f);
+        btn.classList.add('active');
+      }
+      
+      filterPosts();
+    };
+  });
+}
+
+function filterPosts() {
+  const search = document.getElementById('searchPubs').value.toLowerCase();
+  
+  const filtered = postsData.filter(p => {
+    const title = (p[`title_${lang}`] || p.title_en).toLowerCase();
+    const matchSearch = title.includes(search) || p.author.toLowerCase().includes(search);
+    const matchFilter = filters.pubs.size === 0 || (p.tags && p.tags.some(t => filters.pubs.has(t)));
+    
+    return matchSearch && matchFilter;
+  });
+  
+  displayPosts(filtered);
+}
+
+document.getElementById('searchPubs').oninput = filterPosts;
+
+// Models
+async function loadModels() {
+  try {
+    const res = await fetch('data/models.json');
+    modelsData = (await res.json()).models;
+    displayModels(modelsData);
+    setupModelFilters();
+  } catch {
+    document.getElementById('modelsGrid').innerHTML = '<div class="empty">Failed to load.</div>';
+  }
+}
+
+async function displayModels(models) {
+  const grid = document.getElementById('modelsGrid');
+  
+  if (models.length === 0) {
+    grid.innerHTML = '<div class="empty">No models found.</div>';
+    return;
+  }
+  
+  const cards = await Promise.all(models.map(async m => {
+    const content = await loadContent(m.content);
+    const name = m[`name_${lang}`] || m.name_en;
+    
+    return `
+      <div class="card">
+        <div class="card-title">${name}</div>
+        <div class="card-meta">${m.version} • ${m.date}</div>
+        <div class="card-content">${content}</div>
+        <div class="model-info">
+          <div class="model-info-item">
+            <span class="model-info-label">Framework</span>
+            <span class="model-info-value">${m.framework}</span>
+          </div>
+          <div class="model-info-item">
+            <span class="model-info-label">Type</span>
+            <span class="model-info-value">${m.fileType}</span>
+          </div>
+          <div class="model-info-item">
+            <span class="model-info-label">Size</span>
+            <span class="model-info-value">${m.fileSize}</span>
+          </div>
+          <div class="model-info-item">
+            <span class="model-info-label">Arch</span>
+            <span class="model-info-value">${m.architecture}</span>
+          </div>
+        </div>
+        <a href="${m.downloadUrl}" class="btn" download>↓ Download</a>
+      </div>
+    `;
+  }));
+  
+  grid.innerHTML = cards.join('');
+}
+
+function setupModelFilters() {
+  const fws = [...new Set(modelsData.map(m => m.framework))];
+  const cont = document.getElementById('modelFilters');
+  
+  cont.innerHTML = fws.map(f => `<button class="filter-btn" data-f="${f}">${f}</button>`).join('');
+  
+  cont.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.onclick = () => {
+      const f = btn.getAttribute('data-f');
+      
+      if (filters.models.has(f)) {
+        filters.models.delete(f);
+        btn.classList.remove('active');
+      } else {
+        filters.models.add(f);
+        btn.classList.add('active');
+      }
+      
+      filterModels();
+    };
+  });
+}
+
+function filterModels() {
+  const search = document.getElementById('searchModels').value.toLowerCase();
+  
+  const filtered = modelsData.filter(m => {
+    const name = (m[`name_${lang}`] || m.name_en).toLowerCase();
+    const matchSearch = name.includes(search) || m.architecture.toLowerCase().includes(search);
+    const matchFilter = filters.models.size === 0 || filters.models.has(m.framework);
+    
+    return matchSearch && matchFilter;
+  });
+  
+  displayModels(filtered);
+}
+
+document.getElementById('searchModels').oninput = filterModels;
+
+// Init
+loadPosts();
+loadModels();
+</script>
+
+</body>
+</html>
