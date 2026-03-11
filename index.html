@@ -18,20 +18,14 @@ body {
 body.light { background: #fafafa; color: #000; }
 body.dark { background: #060606; color: #ffffff; }
 
-/* Scenic Background - ASCII Art with Fox */
 .scenic-background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.05;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1; opacity: 0.05;
   pointer-events: none;
-  font-size: 10px;
-  line-height: 1.2;
-  white-space: pre;
-  overflow: hidden;
+  font-size: 10px; line-height: 1.2;
+  white-space: pre; overflow: hidden;
   font-family: 'Courier New', monospace;
   padding: 20px;
 }
@@ -64,39 +58,17 @@ body.dark { background: #060606; color: #ffffff; }
   max-width: 900px; margin: 0 auto;
   padding: 80px 40px; display: flex;
   gap: 80px; align-items: flex-start;
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 .left-section { flex: 0 0 200px; position: sticky; top: 80px; }
 
-.profile-wrapper {
-  position: relative;
-  margin-bottom: 30px;
-}
-
-.profile-ascii-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 8px;
-  line-height: 1.1;
-  white-space: pre;
-  opacity: 0.10;
-  z-index: 0;
-  pointer-events: none;
-}
+.profile-wrapper { position: relative; margin-bottom: 30px; }
 
 .profile-image {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-  display: block;
+  width: 180px; height: 180px;
+  border-radius: 50%; object-fit: cover;
+  border: 2px solid; transition: all 0.3s ease;
+  position: relative; z-index: 1; display: block;
 }
 .light .profile-image { border-color: #000; }
 .dark .profile-image { border-color: #e87c1b; }
@@ -109,59 +81,24 @@ body.dark { background: #060606; color: #ffffff; }
 .link-boxes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 20px;
+  gap: 10px; margin-top: 20px;
 }
 
 .link-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border: 1px solid;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: 1;
-  transition: all 0.3s ease;
-  text-align: center;
-  min-height: 45px;
-  font-weight: 600;
+  display: flex; align-items: center;
+  justify-content: center; padding: 10px;
+  border: 1px solid; text-decoration: none;
+  font-size: 12px; opacity: 1;
+  transition: all 0.3s ease; text-align: center;
+  min-height: 45px; font-weight: 600;
 }
-.light .link-box {
-  border-color: #000;
-  color: #000;
-  background: rgba(250, 250, 250, 0.98);
-}
-.dark .link-box {
-  border-color: #fff;
-  color: #fff;
-  background: rgba(20, 20, 20, 0.95);
-}
-.link-box:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-}
+.light .link-box { border-color: #000; color: #000; background: rgba(250,250,250,0.98); }
+.dark .link-box { border-color: #fff; color: #fff; background: rgba(20,20,20,0.95); }
+.link-box:hover { opacity: 1; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.25); }
 
-.right-section {
-  flex: 1;
-  max-width: 600px;
-  font-size: 15px;
-}
-
-.light .right-section {
-  background: rgba(255, 255, 255, 0.99);
-  padding: 30px;
-  border-radius: 8px;
-  color: #000;
-}
-
-.dark .right-section {
-  background: rgba(15, 15, 15, 0.98);
-  padding: 30px;
-  border-radius: 8px;
-  color: #ffffff;
-}
+.right-section { flex: 1; max-width: 600px; font-size: 15px; }
+.light .right-section { background: rgba(255,255,255,0.99); padding: 30px; border-radius: 8px; color: #000; }
+.dark .right-section { background: rgba(15,15,15,0.98); padding: 30px; border-radius: 8px; color: #ffffff; }
 
 .section { margin-bottom: 60px; }
 .section-label { font-size: 12px; opacity: 0.85; margin-bottom: 20px; letter-spacing: 2px; font-weight: bold; }
@@ -184,9 +121,7 @@ body.dark { background: #060606; color: #ffffff; }
   padding: 8px 14px; border: 1px solid;
   text-decoration: none; font-size: 13px;
   opacity: 1; transition: all 0.2s ease;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
+  width: 100%; text-align: center; font-weight: bold;
 }
 .light .cv-button { border-color: #000; color: #000; background: rgba(250,250,250,0.99); }
 .dark .cv-button { border-color: #fff; color: #fff; background: rgba(20,20,20,0.95); }
@@ -197,42 +132,17 @@ body.dark { background: #060606; color: #ffffff; }
 .dark .divider { background: #fff; }
 
 .footer {
-  text-align: center;
-  opacity: 0.75;
-  font-size: 11px;
-  margin-top: 80px;
-  letter-spacing: 1px;
-  overflow: hidden;
-  position: relative;
+  text-align: center; opacity: 0.75;
+  font-size: 11px; margin-top: 80px;
+  letter-spacing: 1px; overflow: hidden; position: relative;
 }
 
-.footer::before {
-  content: "    o---o      o---o      o---o\A     |   |      |   |      |   |\A     o---o------o---o------o---o\A      \   |      |   |      |   /\A       o--o      o---o      o--o";
-  white-space: pre;
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.10;
-  font-size: 10px;
-  line-height: 1.2;
-  pointer-events: none;
-}
-
-.train-track {
-  white-space: pre; line-height: 1;
-  margin: 10px 0; opacity: 0.4; font-size: 9px;
-}
-
-.train-container {
-  position: relative; height: 100px;
-  margin: 8px 0; overflow: hidden;
-}
+.train-track { white-space: pre; line-height: 1; margin: 10px 0; opacity: 0.4; font-size: 9px; }
+.train-container { position: relative; height: 100px; margin: 8px 0; overflow: hidden; }
 .train {
-  white-space: pre; line-height: 1;
-  font-size: 9px; position: absolute;
-  right: -800px; animation: moveTrainLeft 35s linear infinite;
-  opacity: 0.6;
+  white-space: pre; line-height: 1; font-size: 9px;
+  position: absolute; right: -800px;
+  animation: moveTrainLeft 35s linear infinite; opacity: 0.6;
 }
 @keyframes moveTrainLeft {
   0% { right: -800px; }
@@ -263,7 +173,7 @@ body.dark { background: #060606; color: #ffffff; }
 
     <div class="name-card">
       <div class="name" data-en="Girish G Hegde 🦊" data-kn="ಗಿರೀಶ್ ಜಿ ಹೆಗ್ಡೆ 🦊">Girish G Hegde 🦊</div>
-      <div class="title" data-en="4th Year · Data Science" data-kn="4ನೇ ವರ್ಷ · ಡೇಟಾ ಸೈನ್ಸ್">4th Year · Data Science</div>
+      <div class="title" data-en="4th Year · BS–MS Data Science" data-kn="4ನೇ ವರ್ಷ · BS–MS ಡೇಟಾ ಸೈನ್ಸ್">4th Year · BS–MS Data Science</div>
       <div class="title" data-en="IISER Thiruvananthapuram" data-kn="IISER ತಿರುವನಂತಪುರಂ">IISER Thiruvananthapuram</div>
       <a href="cv.pdf" target="_blank" class="cv-button" data-en="Download CV ↓" data-kn="CV ಡೌನ್ಲೋಡ್ ಮಾಡಿ ↓">Download CV ↓</a>
     </div>
@@ -277,30 +187,35 @@ body.dark { background: #060606; color: #ffffff; }
   </div>
 
   <div class="right-section">
+
+    <!-- INTRODUCTION -->
     <div class="section">
       <div class="section-label" data-en="INTRODUCTION" data-kn="ಪರಿಚಯ">INTRODUCTION</div>
       <div class="content">
-        <p data-en="Hello. I'm a 4th-year data science student at IISER Thiruvananthapuram, exploring the intersection of mathematics, statistics, and computational methods." data-kn="ನಮಸ್ಕಾರ. ನಾನು IISER ತಿರುವನಂತಪುರದಲ್ಲಿ 4ನೇ ವರ್ಷದ ಡೇಟಾ ಸೈನ್ಸ್ ವಿದ್ಯಾರ್ಥಿ, ಗಣಿತ, ಸಂಖ್ಯಾಶಾಸ್ತ್ರ ಮತ್ತು ಕಂಪ್ಯೂಟೇಶನಲ್ ವಿಧಾನಗಳ ಸಂಗಮವನ್ನು ಅನ್ವೇಷಿಸುತ್ತಿದ್ದೇನೆ.">Hello. I'm a 4th-year data science student at IISER Thiruvananthapuram, exploring the intersection of mathematics, statistics, and computational methods.</p>
-        <p data-en="I focus on understanding patterns in data and building meaningful solutions through analytical thinking and scientific computation." data-kn="ನಾನು ಡೇಟಾದಲ್ಲಿನ ಪ್ಯಾಟರ್ನ್ಗಳನ್ನು ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋದರ ಮೇಲೆ ಮತ್ತು ವಿಶ್ಲೇಷಣಾತ್ಮಕ ಚಿಂತನೆ ಹಾಗೂ ವೈಜ್ಞಾನಿಕ ಗಣನೆಯ ಮೂಲಕ ಅರ್ಥಪೂರ್ಣ ಪರಿಹಾರಗಳನ್ನು ಕಟ್ಟೋದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸುತ್ತೇನೆ.">I focus on understanding patterns in data and building meaningful solutions through analytical thinking and scientific computation.</p>
+        <p data-en="Hello. I'm a 4th-year BS–MS Data Science student at IISER Thiruvananthapuram, working at the intersection of deep learning, computer vision, and generative models."
+           data-kn="ನಮಸ್ಕಾರ. ನಾನು IISER ತಿರುವನಂತಪುರದಲ್ಲಿ 4ನೇ ವರ್ಷದ BS–MS ಡೇಟಾ ಸೈನ್ಸ್ ವಿದ್ಯಾರ್ಥಿ, ಡೀಪ್ ಲರ್ನಿಂಗ್, ಕಂಪ್ಯೂಟರ್ ವಿಷನ್ ಮತ್ತು ಜನರೇಟಿವ್ ಮಾಡೆಲ್ಗಳ ಸಂಗಮದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದ್ದೇನೆ.">Hello. I'm a 4th-year BS–MS Data Science student at IISER Thiruvananthapuram, working at the intersection of deep learning, computer vision, and generative models.</p>
+        <p data-en="My research focuses on frequency-aware learning, deepfake detection, transformers, and diffusion models. I enjoy building models from scratch and pushing towards robust, generalizable systems."
+           data-kn="ನನ್ನ ಸಂಶೋಧನೆಯು ಫ್ರೀಕ್ವೆನ್ಸಿ-ಅರಿವಿನ ಕಲಿಕೆ, ಡೀಪ್ಫೇಕ್ ಪತ್ತೆ, ಟ್ರಾನ್ಸ್ಫಾರ್ಮರ್ಗಳು ಮತ್ತು ಡಿಫ್ಯೂಷನ್ ಮಾಡೆಲ್ಗಳ ಮೇಲೆ ಕೇಂದ್ರೀಕೃತವಾಗಿದೆ.">My research focuses on frequency-aware learning, deepfake detection, transformers, and diffusion models. I enjoy building models from scratch and pushing towards robust, generalizable systems.</p>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- INTERESTS -->
     <div class="section">
       <div class="section-label" data-en="INTERESTS" data-kn="ಆಸಕ್ತಿಗಳು">INTERESTS</div>
       <div class="content">
         <div class="item">
-          <div class="item-title" data-en="Machine Learning" data-kn="ಮೆಷಿನ್ ಲರ್ನಿಂಗ್">Machine Learning</div>
-          <div class="item-desc" data-en="Exploring algorithms and statistical models" data-kn="ಅಲ್ಗಾರಿದಮ್ಗಳು ಮತ್ತು ಸಂಖ್ಯಾಶಾಸ್ತ್ರೀಯ ಮಾಡೆಲ್ಗಳನ್ನು ಅನ್ವೇಷಿಸುವುದು">Exploring algorithms and statistical models</div>
+          <div class="item-title" data-en="Deep Learning &amp; Computer Vision" data-kn="ಡೀಪ್ ಲರ್ನಿಂಗ್ &amp; ಕಂಪ್ಯೂಟರ್ ವಿಷನ್">Deep Learning &amp; Computer Vision</div>
+          <div class="item-desc" data-en="CNNs, Vision Transformers, and frequency-domain learning" data-kn="CNN, ವಿಷನ್ ಟ್ರಾನ್ಸ್ಫಾರ್ಮರ್ ಮತ್ತು ಫ್ರೀಕ್ವೆನ್ಸಿ-ಡೊಮೇನ್ ಕಲಿಕೆ">CNNs, Vision Transformers, and frequency-domain learning</div>
         </div>
         <div class="item">
-          <div class="item-title" data-en="Data Visualization" data-kn="ಡೇಟಾ ದೃಶ್ಯೀಕರಣ">Data Visualization</div>
-          <div class="item-desc" data-en="Creating meaningful representations of complex data" data-kn="ಸಂಕೀರ್ಣ ಡೇಟಾದ ಅರ್ಥಪೂರ್ಣ ನಿರೂಪಣೆಗಳನ್ನು ರಚಿಸುವುದು">Creating meaningful representations of complex data</div>
+          <div class="item-title" data-en="Generative Models" data-kn="ಜನರೇಟಿವ್ ಮಾಡೆಲ್ಗಳು">Generative Models</div>
+          <div class="item-desc" data-en="GANs, VAEs, and Diffusion Models for image synthesis" data-kn="ಚಿತ್ರ ಸಂಶ್ಲೇಷಣೆಗಾಗಿ GAN, VAE ಮತ್ತು ಡಿಫ್ಯೂಷನ್ ಮಾಡೆಲ್ಗಳು">GANs, VAEs, and Diffusion Models for image synthesis</div>
         </div>
         <div class="item">
           <div class="item-title" data-en="Research" data-kn="ಸಂಶೋಧನೆ">Research</div>
-          <div class="item-desc" data-en="Scientific computing and computational analysis" data-kn="ವೈಜ್ಞಾನಿಕ ಗಣನೆ ಮತ್ತು ಕಂಪ್ಯೂಟೇಶನಲ್ ವಿಶ್ಲೇಷಣೆ">Scientific computing and computational analysis</div>
+          <div class="item-desc" data-en="Representation learning, multi-object tracking, and robustness" data-kn="ರಿಪ್ರೆಸೆಂಟೇಶನ್ ಲರ್ನಿಂಗ್, ಮಲ್ಟಿ-ಆಬ್ಜೆಕ್ಟ್ ಟ್ರ್ಯಾಕಿಂಗ್ ಮತ್ತು ರೊಬಸ್ಟ್ನೆಸ್">Representation learning, multi-object tracking, and robustness</div>
         </div>
         <div class="item">
           <div class="item-title" data-en="Reading" data-kn="ಓದುವುದು">Reading</div>
@@ -311,50 +226,89 @@ body.dark { background: #060606; color: #ffffff; }
 
     <div class="divider"></div>
 
+    <!-- RESEARCH -->
     <div class="section">
-      <div class="section-label" data-en="PROJECTS" data-kn="ಯೋಜನೆಗಳು">PROJECTS</div>
+      <div class="section-label" data-en="RESEARCH" data-kn="ಸಂಶೋಧನೆ">RESEARCH</div>
       <div class="content">
         <div class="item">
-          <div class="item-title" data-en="Detecting Facial Deepfakes using frequency aware deeplearning techniques" data-kn="ಫ್ರೀಕ್ವೆನ್ಸಿ ಅರಿವಿನ ಡೀಪ್ಲರ್ನಿಂಗ್ ತಂತ್ರಗಳನ್ನು ಬಳಸಿ ಮುಖದ ಡೀಪ್ಫೇಕ್ಗಳನ್ನು ಪತ್ತೆ ಮಾಡುವುದು">Detecting Facial Deepfakes using frequency aware deeplearning techniques</div>
-          <div class="item-desc" data-en="Exploring algorithms and statistical models" data-kn="ಅಲ್ಗಾರಿದಮ್ಗಳು ಮತ್ತು ಸಂಖ್ಯಾಶಾಸ್ತ್ರೀಯ ಮಾಡೆಲ್ಗಳನ್ನು ಅನ್ವೇಷಿಸುವುದು">Exploring algorithms and statistical models</div>
-        </div>
-        <div class="item">
-          <div class="item-title" data-en="Building Tiny recursive Models" data-kn="ಚಿಕ್ಕ ರಿಕರ್ಸಿವ್ ಮಾಡೆಲ್ಗಳನ್ನು ಕಟ್ಟುವುದು">Building Tiny recursive Models</div>
-          <div class="item-desc" data-en="Creating meaningful representations of complex data" data-kn="ಸಂಕೀರ್ಣ ಡೇಟಾದ ಅರ್ಥಪೂರ್ಣ ನಿರೂಪಣೆಗಳನ್ನು ರಚಿಸುವುದು">Creating meaningful representations of complex data</div>
-        </div>
-        <div class="item">
-          <div class="item-title" data-en="Lexi AI" data-kn="ಲೆಕ್ಸಿ AI">Lexi AI</div>
-          <div class="item-desc" data-en="Scientific computing and computational analysis" data-kn="ವೈಜ್ಞಾನಿಕ ಗಣನೆ ಮತ್ತು ಕಂಪ್ಯೂಟೇಶನಲ್ ವಿಶ್ಲೇಷಣೆ">Scientific computing and computational analysis</div>
-        </div>
-        <div class="item">
-          <div class="item-title" data-en="SVD and Graph Neural Nets" data-kn="SVD ಮತ್ತು ಗ್ರಾಫ್ ನ್ಯೂರಲ್ ನೆಟ್ಸ್">SVD and Graph Neural Nets</div>
-          <div class="item-desc" data-en="Technical papers, mathematics, and philosophy" data-kn="ತಾಂತ್ರಿಕ ಪತ್ರಿಕೆಗಳು, ಗಣಿತ ಮತ್ತು ತತ್ವಶಾಸ್ತ್ರ">Technical papers, mathematics, and philosophy</div>
+          <div class="item-title" data-en="Deep Intelligence Lab, IISER Thiruvananthapuram (2024–Present)" data-kn="ಡೀಪ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಲ್ಯಾಬ್, IISER ತಿರುವನಂತಪುರಂ (2024–ಪ್ರಸ್ತುತ)">Deep Intelligence Lab, IISER Thiruvananthapuram (2024–Present)</div>
+          <div class="item-desc" data-en="Supervisor: Dr. Alwin Poulose · Frequency-aware deep learning for facial deepfake detection. Designed Fourier &amp; DCT pipelines for spectral feature learning; integrated CNN + Vision Transformer architectures; evaluated cross-domain generalization against GAN and diffusion-based attacks."
+                                  data-kn="ಮೇಲ್ವಿಚಾರಕರು: ಡಾ. ಅಲ್ವಿನ್ ಪೌಲೋಸ್ · ಫೇಶಿಯಲ್ ಡೀಪ್ಫೇಕ್ ಪತ್ತೆಗಾಗಿ ಫ್ರೀಕ್ವೆನ್ಸಿ-ಅರಿವಿನ ಡೀಪ್ ಲರ್ನಿಂಗ್ ಸಂಶೋಧನೆ.">Supervisor: Dr. Alwin Poulose · Frequency-aware deep learning for facial deepfake detection. Designed Fourier &amp; DCT pipelines for spectral feature learning; integrated CNN + Vision Transformer architectures; evaluated cross-domain generalization against GAN and diffusion-based attacks.</div>
         </div>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="section-label" data-en="PROJECTS" data-kn="ಯೋಜನೆಗಳು">PROJECTS</div>
+      <div class="content">
+        <div class="item">
+          <div class="item-title" data-en="Multi-Vehicle Detection &amp; Tracking: Attention Faster RCNN vs YOLOv8" data-kn="ಮಲ್ಟಿ-ವೆಹಿಕಲ್ ಡಿಟೆಕ್ಷನ್ &amp; ಟ್ರ್ಯಾಕಿಂಗ್">Multi-Vehicle Detection &amp; Tracking: Attention Faster RCNN vs YOLOv8</div>
+          <div class="item-desc" data-en="Full CV pipeline for vehicle detection, tracking, and benchmarking. Implemented YOLOv8 with CBAM attention and Faster R-CNN; integrated ByteTrack with trajectory visualization; benchmarked mAP, precision, recall, and inference latency on real-time video."
+                                  data-kn="ವಾಹನ ಪತ್ತೆ ಮತ್ತು ಟ್ರ್ಯಾಕಿಂಗ್‌ಗಾಗಿ ಸಂಪೂರ್ಣ CV ಪೈಪ್‌ಲೈನ್.">Full CV pipeline for vehicle detection, tracking, and benchmarking. Implemented YOLOv8 with CBAM attention and Faster R-CNN; integrated ByteTrack with trajectory visualization; benchmarked mAP, precision, recall, and inference latency on real-time video.</div>
+        </div>
+        <div class="item">
+          <div class="item-title" data-en="Generative Image Modeling: GAN, VAE, Diffusion U-Net" data-kn="ಜನರೇಟಿವ್ ಇಮೇಜ್ ಮಾಡೆಲಿಂಗ್: GAN, VAE, Diffusion U-Net">Generative Image Modeling: GAN, VAE, Diffusion U-Net</div>
+          <div class="item-desc" data-en="Implemented GANs and VAEs from scratch; trained on Kaggle P100 GPU for landscape image synthesis. Fine-tuned GAN architectures for training stability and visual fidelity; explored latent space representations."
+                                  data-kn="GAN ಮತ್ತು VAE ಅನ್ನು ಸ್ಕ್ರ್ಯಾಚ್‌ನಿಂದ ಅಳವಡಿಸಲಾಗಿದೆ; Kaggle P100 GPU ನಲ್ಲಿ ತರಬೇತಿ ನೀಡಲಾಗಿದೆ.">Implemented GANs and VAEs from scratch; trained on Kaggle P100 GPU for landscape image synthesis. Fine-tuned GAN architectures for training stability and visual fidelity; explored latent space representations.</div>
+        </div>
+        <div class="item">
+          <div class="item-title" data-en="Transformer Models and Vision Transformers" data-kn="ಟ್ರಾನ್ಸ್ಫಾರ್ಮರ್ ಮಾಡೆಲ್ಗಳು ಮತ್ತು ವಿಷನ್ ಟ್ರಾನ್ಸ್ಫಾರ್ಮರ್ಗಳು">Transformer Models and Vision Transformers</div>
+          <div class="item-desc" data-en="Implemented seq2seq Transformer for English–French NMT and Vision Transformer from scratch for Oxford Flower classification. Built attention mechanisms and positional encoding end-to-end."
+                                  data-kn="English–French NMT ಗಾಗಿ seq2seq ಟ್ರಾನ್ಸ್ಫಾರ್ಮರ್ ಮತ್ತು Oxford Flower ವರ್ಗೀಕರಣಕ್ಕಾಗಿ ViT ಅಳವಡಿಸಲಾಗಿದೆ.">Implemented seq2seq Transformer for English–French NMT and Vision Transformer from scratch for Oxford Flower classification. Built attention mechanisms and positional encoding end-to-end.</div>
+        </div>
+        <div class="item">
+          <div class="item-title" data-en="Facial Deepfake Detection (Frequency-Aware Deep Learning)" data-kn="ಫೇಶಿಯಲ್ ಡೀಪ್ಫೇಕ್ ಪತ್ತೆ">Facial Deepfake Detection (Frequency-Aware Deep Learning)</div>
+          <div class="item-desc" data-en="Spectral feature learning via Fourier &amp; DCT transforms; CNN + ViT hybrid for generative artifact detection; ablation studies on feature representations; robustness evaluation against GAN and diffusion-based attacks."
+                                  data-kn="Fourier &amp; DCT ಟ್ರಾನ್ಸ್ಫಾರ್ಮ್ ಬಳಸಿ ಸ್ಪೆಕ್ಟ್ರಲ್ ಫೀಚರ್ ಲರ್ನಿಂಗ್.">Spectral feature learning via Fourier &amp; DCT transforms; CNN + ViT hybrid for generative artifact detection; ablation studies on feature representations; robustness evaluation against GAN and diffusion-based attacks.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SKILLS -->
     <div class="section">
       <div class="section-label" data-en="SKILLS" data-kn="ಕೌಶಲ್ಯಗಳು">SKILLS</div>
       <div class="content">
         <div class="item">
           <div class="item-title" data-en="Languages" data-kn="ಭಾಷೆಗಳು">Languages</div>
-          <div class="item-desc">Python · R · Julia · C · C++</div>
+          <div class="item-desc">Python · R · C · Bash</div>
+        </div>
+        <div class="item">
+          <div class="item-title" data-en="Frameworks" data-kn="ಫ್ರೇಮ್‌ವರ್ಕ್‌ಗಳು">Frameworks</div>
+          <div class="item-desc">PyTorch · TensorFlow</div>
         </div>
         <div class="item">
           <div class="item-title" data-en="Tools" data-kn="ಸಾಧನಗಳು">Tools</div>
-          <div class="item-desc">NumPy · Pandas · TensorFlow · Streamlit · Git</div>
+          <div class="item-desc">Git · Jupyter · LaTeX · Label Studio</div>
         </div>
         <div class="item">
           <div class="item-title" data-en="Methods" data-kn="ವಿಧಾನಗಳು">Methods</div>
-          <div class="item-desc" data-en="Statistical Analysis · Deep Learning · Predictive Modeling" data-kn="ಸಂಖ್ಯಾಶಾಸ್ತ್ರೀಯ ವಿಶ್ಲೇಷಣೆ · ಡೀಪ್ ಲರ್ನಿಂಗ್ · ಮುನ್ಸೂಚಕ ಮಾಡೆಲಿಂಗ್">Statistical Analysis · Deep Learning · Predictive Modeling</div>
+          <div class="item-desc" data-en="Deep Learning · Computer Vision · Generative Models · Transformers · Diffusion Models"
+                                  data-kn="ಡೀಪ್ ಲರ್ನಿಂಗ್ · ಕಂಪ್ಯೂಟರ್ ವಿಷನ್ · ಜನರೇಟಿವ್ ಮಾಡೆಲ್ಗಳು · ಟ್ರಾನ್ಸ್ಫಾರ್ಮರ್ಗಳು · ಡಿಫ್ಯೂಷನ್ ಮಾಡೆಲ್ಗಳು">Deep Learning · Computer Vision · Generative Models · Transformers · Diffusion Models</div>
         </div>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- AWARDS -->
+    <div class="section">
+      <div class="section-label" data-en="AWARDS" data-kn="ಪ್ರಶಸ್ತಿಗಳು">AWARDS</div>
+      <div class="content">
+        <div class="item">
+          <div class="item-title" data-en="Best Poster Award (2026)" data-kn="ಅತ್ಯುತ್ತಮ ಪೋಸ್ಟರ್ ಪ್ರಶಸ್ತಿ (2026)">Best Poster Award (2026)</div>
+          <div class="item-desc" data-en="FS Data Science Conference, IISER Thiruvananthapuram" data-kn="FS ಡೇಟಾ ಸೈನ್ಸ್ ಕಾನ್ಫರೆನ್ಸ್, IISER ತಿರುವನಂತಪುರಂ">FS Data Science Conference, IISER Thiruvananthapuram</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
     <div class="section">
       <div class="section-label" data-en="CONTACT" data-kn="ಸಂಪರ್ಕ">CONTACT</div>
       <div class="content">
@@ -376,9 +330,10 @@ body.dark { background: #060606; color: #ffffff; }
   0--0--0     00   00  00                00   00          00
         </div>
       </div>
-      <div style="margin-top: 50px;" data-en="※ Updated October 2025 🤖" data-kn="※ ಅಕ್ಟೋಬರ್ 2025 ಅಪ್ಡೇಟ್ ಮಾಡಲಾಗಿದೆ 🤖">※ Updated October 2025 🤖</div>
+      <div style="margin-top: 50px;" data-en="※ Updated March 2026 🤖" data-kn="※ ಮಾರ್ಚ್ 2026 ಅಪ್ಡೇಟ್ ಮಾಡಲಾಗಿದೆ 🤖">※ Updated March 2026 🤖</div>
       <div class="train-track">╚═══════════════════════════════════════════════════════════════════════════════════════╝</div>
     </div>
+
   </div>
 </div>
 
@@ -404,11 +359,7 @@ function toggleLanguage() {
   langToggle.textContent = currentLang === 'en' ? 'ಕ' : 'English';
 
   document.querySelectorAll('[data-en][data-kn]').forEach(el => {
-    if (el.tagName === 'A') {
-      el.textContent = el.getAttribute('data-' + currentLang);
-    } else {
-      el.textContent = el.getAttribute('data-' + currentLang);
-    }
+    el.textContent = el.getAttribute('data-' + currentLang);
   });
 
   localStorage.setItem('language', currentLang);
